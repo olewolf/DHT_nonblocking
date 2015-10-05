@@ -1,0 +1,17 @@
+###########################################
+# Syntax Coloring Map For DHT nonblocking library
+###########################################
+
+###########################################
+# Datatypes (KEYWORD1)
+###########################################
+
+DHT_nonblocking	KEYWORD1
+
+###########################################
+# Methods and Functions (KEYWORD2)
+###########################################
+
+begin KEYWORD2
+measure KEYWORD2
+
