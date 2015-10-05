@@ -213,10 +213,10 @@ boolean DHT_nonblocking::read_nonblocking( )
       dht_timestamp = millis( );
       dht_state = DHT_COOLDOWN;
       status = read_data( );
-      if( status != true )
-      {
-        Serial.println( "Reading failed" );
-      }
+//      if( status != true )
+//      {
+//        Serial.println( "Reading failed" );
+//      }
     }
     break;
 
