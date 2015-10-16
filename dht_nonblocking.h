@@ -43,16 +43,16 @@ class DHT_nonblocking
   private:
     boolean read_data( );
     boolean read_nonblocking( );
-    float read_temperature( );
-    float read_humidity( );
+    float read_temperature( ) const;
+    float read_humidity( ) const;
 
     uint8_t dht_state;
     unsigned long dht_timestamp;
     uint8_t data[ 6 ];
-    uint8_t _pin, _type, _bit, _port;
-    uint32_t _maxcycles;
+    const uint8_t _pin, _type, _bit, _port;
+    const uint32_t _maxcycles;
 
-    uint32_t expect_pulse( bool level );
+    uint32_t expect_pulse( bool level ) const;
 };
 
 

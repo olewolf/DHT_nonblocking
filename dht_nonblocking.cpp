@@ -38,16 +38,12 @@
  * type of sensor, and initializes internal variables.
  */
 DHT_nonblocking::DHT_nonblocking( uint8_t pin, uint8_t type )
+	: _pin( pin ),
+	  _type( type ),
+	  _bit( digitalPinToBitMask( pin ) ),
+	  _port( digitalPinToPort( pin ) ),
+	  _maxcycles( microsecondsToClockCycles( 1000 ) )
 {
-  _pin = pin;
-  _type = type;
-  _bit = digitalPinToBitMask( pin );
-  _port = digitalPinToPort( pin );
-  _maxcycles = microsecondsToClockCycles( 1000 );  // 1 millisecond timeout for
-                                                 // reading pulses from DHT sensor.
-  // Note that count is now ignored as the DHT reading algorithm adjusts itself
-  // basd on the speed of the processor.
-
   dht_state = DHT_IDLE;
 
   pinMode( _pin, INPUT );
@@ -76,7 +72,7 @@ bool DHT_nonblocking::measure( float *temperature, float *humidity )
 
 
 
-float DHT_nonblocking::read_temperature( )
+float DHT_nonblocking::read_temperature( ) const
 {
   int16_t value;
   float   to_return;
@@ -109,7 +105,7 @@ float DHT_nonblocking::read_temperature( )
 
 
 
-float DHT_nonblocking::read_humidity( )
+float DHT_nonblocking::read_humidity( ) const
 {
   uint16_t value;
   float   to_return;
@@ -143,7 +139,7 @@ float DHT_nonblocking::read_humidity( )
  * of loop cycles spent there.  This is identical to Adafruit's blocking
  * driver.
  */
-uint32_t DHT_nonblocking::expect_pulse(bool level)
+uint32_t DHT_nonblocking::expect_pulse(bool level) const
 {
   uint32_t count = 0;
   // On AVR platforms use direct GPIO port access as it's much faster and better
