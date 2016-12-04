@@ -41,8 +41,8 @@ class DHT_nonblocking
     bool measure( float *temperature, float *humidity );
 
   private:
-    boolean read_data( );
-    boolean read_nonblocking( );
+    bool read_data( );
+    bool read_nonblocking( );
     float read_temperature( ) const;
     float read_humidity( ) const;
 
