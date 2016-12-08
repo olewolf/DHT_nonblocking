@@ -169,7 +169,7 @@ uint32_t DHT_nonblocking::expect_pulse(bool level) const
 /*
  * State machine of the non-blocking read.
  */
-boolean DHT_nonblocking::read_nonblocking( )
+bool DHT_nonblocking::read_nonblocking( )
 {
   bool status = false;
 
