@@ -12,6 +12,6 @@ DHT_nonblocking	KEYWORD1
 # Methods and Functions (KEYWORD2)
 ###########################################
 
-begin KEYWORD2
-measure KEYWORD2
+begin	KEYWORD2
+measure	KEYWORD2
 
