@@ -30,7 +30,7 @@
 
 
 /* Number of milliseconds before a new sensor read may be initiated. */
-#define COOLDOWN_TIME  2000
+#define COOLDOWN_TIME  10000
 
 
 /*
@@ -80,8 +80,9 @@ float DHT_nonblocking::read_temperature( ) const
   switch( _type )
   {
   case DHT_TYPE_11:
-    value = data[ 2 ];
-    to_return = (float) value;
+    to_return = data[2];
+    if (data[3] & 0x80) to_return = -1. - to_return;
+    to_return += (data[3] & 0x0f) * 0.1;
     break;
 
   case DHT_TYPE_21:
