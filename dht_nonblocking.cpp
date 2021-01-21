@@ -81,8 +81,8 @@ float DHT_nonblocking::read_temperature( ) const
   {
   case DHT_TYPE_11:
     to_return = data[2];
-    if (data[3] & 0x80) to_return = -1. - to_return;
     to_return += (data[3] & 0x0f) * 0.1;
+    if (data[3] & 0x80) to_return = -1. - to_return;
     break;
 
   case DHT_TYPE_21:
