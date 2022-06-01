@@ -33,6 +33,12 @@
 #define DHT_TYPE_21  1
 #define DHT_TYPE_22  2
 
+#if defined(SAMD21G18A)
+#define REGTYPE PortGroup*
+#else#
+#define REGTYPE uint8_t //UNO & other AVR processors, use 8 bit registers
+#endif
+
 
 class DHT_nonblocking
 {
@@ -49,7 +55,8 @@ class DHT_nonblocking
     uint8_t dht_state;
     unsigned long dht_timestamp;
     uint8_t data[ 6 ];
-    const uint8_t _pin, _type, _bit, _port;
+    const uint8_t _pin, _type, _bit;
+    REGTYPE _port;
     const uint32_t _maxcycles;
 
     uint32_t expect_pulse( bool level ) const;
