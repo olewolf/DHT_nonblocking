@@ -35,7 +35,7 @@
 
 #if defined(SAMD21G18A)
 #define REGTYPE PortGroup*
-#else#
+#else
 #define REGTYPE uint8_t //UNO & other AVR processors, use 8 bit registers
 #endif
 
